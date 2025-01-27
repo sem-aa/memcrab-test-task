@@ -3,8 +3,10 @@ import {
   calcHeatmapColor,
   calcProcetCell,
   calculateRowSum,
-} from "../utils/helpers";
-import { useMatrixActions } from "../hooks/useMatrixActions";
+} from "../../../utils/helpers";
+import { useMatrixActions } from "../../../hooks/useMatrixActions";
+import styles from "./MatrixRow.module.css";
+import Button from "../../Buttons/Button";
 
 interface MatrixRowProps {
   index: number;
@@ -24,7 +26,7 @@ const MatrixRow: FC<MatrixRowProps> = ({
   const [hoverSum, setHoverSum] = useState(false);
 
   const { handleCellClick, handleRemoveRow } = useMatrixActions();
- 
+
   const rowSum = useMemo(() => calculateRowSum(rows), [rows]);
   const maxCellValue = useMemo(
     () => Math.max(...rows.map((cell) => cell.amount)),
@@ -32,17 +34,18 @@ const MatrixRow: FC<MatrixRowProps> = ({
   );
 
   return (
-    <tr>
-      <td style={{ fontWeight: "bold" }}>Cell Value M = {index + 1}</td>
+    <tr className={styles.matrixRow}>
       {rows.map((cell, j) => (
         <td
-          style={{
-            textAlign: "center",
-            background: isCellHighlighted(cell.id)
-              ? "lightblue"
+          className={`${styles.matrixCell} ${
+            isCellHighlighted(cell.id)
+              ? styles.matrixCellHighlighted
               : hoverSum
-              ? calcHeatmapColor(cell, maxCellValue)
-              : "white",
+              ? styles.matrixCellHeatmap
+              : ""
+          }`}
+          style={{
+            background: hoverSum ? calcHeatmapColor(cell, maxCellValue) : "",
           }}
           key={cell.id}
           onClick={() => handleCellClick(index, j)}
@@ -53,14 +56,20 @@ const MatrixRow: FC<MatrixRowProps> = ({
         </td>
       ))}
       <td
+        className={styles.sumCell}
         onMouseEnter={() => setHoverSum(true)}
         onMouseLeave={() => setHoverSum(false)}
-        style={{ fontWeight: "bold" }}
       >
         {rowSum}
       </td>
-      <td>
-        <button onClick={() => handleRemoveRow(index)}>Delete Row</button>
+      <td className={styles.deleteCell}>
+        <Button
+          onClick={() => handleRemoveRow(index)}
+          variant="danger"
+          size="small"
+        >
+          Delete row
+        </Button>
       </td>
     </tr>
   );

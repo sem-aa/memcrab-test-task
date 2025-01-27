@@ -1,17 +1,17 @@
 import { MatrixType } from "../../types";
-import { generateMatrix, generateNewRow } from "../../utils/helpers";
-import { MatrixAction } from "./types";
+import { generateMatrix, generateNewRow } from "../../utils/matrixGenerator";
+import { MatrixAction, MatrixActionTypes } from "./types";
 
 export const matrixReducer = (
   state: MatrixType,
   action: MatrixAction
 ): MatrixType => {
   switch (action.type) {
-    case "SET_MATRIX": {
+    case MatrixActionTypes.SET_MATRIX: {
       const { rows, cols } = action;
       return generateMatrix(rows, cols);
     }
-    case "UPDATE_CELL_BY_INDEX": {
+    case MatrixActionTypes.UPDATE_CELL_BY_INDEX: {
       const { rowIndex, colIndex, value } = action;
       return state.map((row, rIdx) =>
         row.map((cell, cIdx) =>
@@ -21,12 +21,15 @@ export const matrixReducer = (
         )
       );
     }
-    case "ADD_ROW": {
+    case MatrixActionTypes.ADD_ROW: {
       const newRow = generateNewRow(state[0].length);
       return [...state, newRow];
     }
-    case "REMOVE_ROW": {
+    case MatrixActionTypes.REMOVE_ROW: {
       return state.filter((_, idx) => idx !== action.rowIndex);
+    }
+    case MatrixActionTypes.CLEAR_MATRIX: {
+      return [];
     }
     default:
       return state;

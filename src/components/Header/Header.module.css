@@ -1,0 +1,24 @@
+.header {
+  text-align: center;
+  margin: 14px 0;
+}
+
+.title {
+  font-size: 2em;
+  margin: 0;
+}
+
+.description {
+  font-size: 1.2em;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .description {
+    font-size: 1em;
+  }
+}

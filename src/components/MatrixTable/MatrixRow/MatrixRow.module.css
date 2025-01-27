@@ -1,0 +1,36 @@
+.matrixRow {
+  transition: background-color 0.5s ease;
+}
+
+.matrixCell {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  width: 50px;
+}
+
+.matrixCell:hover {
+  background-color: #f0f0f0;
+}
+
+.matrixCellHighlighted {
+  background-color: lightblue;
+}
+
+.matrixCellHeatmap {
+  transition: background-color 0.5s ease;
+}
+
+.sumCell {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
+
+.deleteCell {
+  padding: 4px;
+}

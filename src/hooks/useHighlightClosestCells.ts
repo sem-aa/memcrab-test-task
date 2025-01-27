@@ -3,7 +3,7 @@ import { Cell as CellType, MatrixType } from "../types";
 
 export const useHighlightClosestCells = (matrix: MatrixType) => {
   const [hoveredCell, setHoveredCell] = useState<CellType | null>(null);
-  const [qntShowClosestValues, setQntShowClosestValues] = useState("5");
+  const [qntShowClosestValues, setQntShowClosestValues] = useState("3");
 
   const handleMouseEnter = useCallback((cell: CellType) => {
     setHoveredCell(cell);
@@ -34,8 +34,6 @@ export const useHighlightClosestCells = (matrix: MatrixType) => {
       );
     } else return [];
   }, [hoveredCell, matrix, qntShowClosestValues]);
-
-  console.log("closestCells", closestCells);
 
   const isCellHighlighted = useCallback(
     (cellId: number) => {

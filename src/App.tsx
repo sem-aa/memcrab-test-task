@@ -1,14 +1,18 @@
-import { Form } from "./components/Form";
-import { MatrixTable } from "./components/MatrixTable";
 import { MatrixProvider } from "./context/matrix/MatrixProvider";
+import Container from "./components/Container/Container";
+import Header from "./components/Header/Header";
+import MatrixForm from "./components/MatrixForm/MatrixForm";
+import MatrixTable from "./components/MatrixTable/MatrixTable";
 
 const App = () => {
   return (
-    <MatrixProvider>
-      <h1>Matrix table</h1>
-      <Form />
-      <MatrixTable />
-    </MatrixProvider>
+    <Container>
+      <Header />
+      <MatrixProvider>
+        <MatrixForm />
+        <MatrixTable />
+      </MatrixProvider>
+    </Container>
   );
 };
 
