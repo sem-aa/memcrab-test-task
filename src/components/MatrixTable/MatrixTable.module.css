@@ -10,11 +10,15 @@
 .tableContainer {
   max-width: 100vh;
   overflow-x: auto;
-  display: flex;
-  justify-content: center;
 }
 
 .noMatrixMessage {
   font-size: 1.2em;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 330px;
+  }
 }

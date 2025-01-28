@@ -25,7 +25,7 @@ const MatrixTable = () => {
             setQntShowClosestValues={setQntShowClosestValues}
           />
           <div className={styles.tableContainer}>
-            <table>
+            <table className={styles.table}>
               <thead>
                 <tr>
                   {Array.from({ length: matrix[0].length }, (_, i) => (

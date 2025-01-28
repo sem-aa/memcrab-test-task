@@ -34,8 +34,7 @@ const MatrixControls: FC<MatrixControlsProps> = ({
         <span className={styles.tooltip}>
           ℹ
           <span className={styles.tooltipText}>
-            Enter the number of values closest to the current value to
-            highlight.
+            Number of closest values to highlight
           </span>
         </span>
 

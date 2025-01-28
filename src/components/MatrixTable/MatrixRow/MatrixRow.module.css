@@ -12,7 +12,7 @@
 }
 
 .matrixCell:hover {
-  background-color: #f0f0f0;
+  background-color: #dedcdc;
 }
 
 .matrixCellHighlighted {
@@ -33,4 +33,11 @@
 
 .deleteCell {
   padding: 4px;
+}
+
+@media (max-width: 600px) {
+  .matrixCell {
+    padding: 6px;
+    font-size: 0.9em;
+  }
 }
